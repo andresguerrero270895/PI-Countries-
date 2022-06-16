@@ -16,19 +16,19 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    flag_img: {
+    flag: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    region: {
+    continent: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
     capital: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
     },
 
     subregion: {
