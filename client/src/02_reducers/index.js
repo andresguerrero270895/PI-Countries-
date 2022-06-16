@@ -100,7 +100,7 @@ export default function rootReducer (state = initialState, action){
                 countries: orderCountriesByName
             }
     
-        case' ORDER_BY_POPULATION':
+        case 'ORDER_BY_POPULATION':
             let orderCountriesByPopulation = action.payload === HIGHER_POPULATION ? state.countries.sort((a, b)=>{
                 if (a.population < b.population) {
                     return 1;
