@@ -1,0 +1,29 @@
+.formSearchBar{
+    margin: 0.7rem 1.5rem 0.5rem 0.9rem;
+    font-family: Gill Sans MT;
+    font-size:1rem;
+    color: white;
+    background:transparent;
+   
+    border-radius: 6px;
+}
+
+.inputCountry{
+    font-size:large;
+    color:  black;
+    background: white;
+    border-radius: 6px;
+}
+
+.inputButton{
+    margin: 0.9rem 0.9rem 0.9rem 0.9rem;
+	
+    font-family: Gill Sans MT;
+    font-size: 1rem;
+    color:white;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 6px;
+	text-align: center;
+	height:30px;
+}

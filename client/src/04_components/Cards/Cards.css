@@ -1,0 +1,40 @@
+.section1 {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    height:50px;
+}
+
+.section2 {
+    width: 100%;
+    flex: 80%;
+    flex-wrap: wrap;
+    color: white;
+    white-space:1px;
+}
+
+.cardsBox{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap:5px;
+}
+
+.filterAndOrder{
+	margin: 0.9rem 0.9rem 0.9rem 0.9rem;
+	margin-top: 0.3rem;
+    font-family: Gill Sans MT;
+    font-size: 1rem ;
+    color:white;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 6px;
+	text-align: center;
+	height: 36px;
+}
+
+option{
+    color:black;
+}

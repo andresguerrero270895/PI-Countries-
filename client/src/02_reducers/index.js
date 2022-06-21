@@ -45,9 +45,9 @@ export default function rootReducer (state = initialState, action){
         
         case 'FILTER_BY_CONTINENT':
             const allcontinents = state.allCountries;
-            const continentsFiltered = action.payload === 'All'? allcontinents
+            const continentsFiltered = action.payload === 'all'? allcontinents
             :allcontinents.filter(c => c.continent === action.payload)
-            if (typesFiltered.length === 0) {
+            if (continentsFiltered.length === 0) {
                 alert(`No countries found for ${action.payload} continent`)
                 return state
             } else {
@@ -63,7 +63,7 @@ export default function rootReducer (state = initialState, action){
                 return c.activities.find((c) => { 
                 return c.name === action.payload})
             })
-            if (action.payload === 'todos') {
+            if (action.payload === 'all') {
                 return { 
                     ...state, 
                     countries: allActivities
@@ -76,7 +76,7 @@ export default function rootReducer (state = initialState, action){
             }
 
         case 'ORDER_BY_NAME':
-            let orderCountriesByName = action.payload === ASC ? 
+            let orderCountriesByName = action.payload === 'az' ? 
             state.countries.sort((a, b) => {
                 if (a.name < b.name) {
                     return -1;
@@ -101,7 +101,7 @@ export default function rootReducer (state = initialState, action){
             }
     
         case 'ORDER_BY_POPULATION':
-            let orderCountriesByPopulation = action.payload === HIGHER_POPULATION ? state.countries.sort((a, b)=>{
+            let orderCountriesByPopulation = action.payload === 'max' ? state.countries.sort((a, b)=>{
                 if (a.population < b.population) {
                     return 1;
                 }
@@ -127,6 +127,3 @@ export default function rootReducer (state = initialState, action){
         return state;
     }
 }
-
-//filtrar por continente y por tipo de actividad turistica 
-//ordenar ascendente y descendente por poblacion y nombre de pais

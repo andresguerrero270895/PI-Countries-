@@ -17,7 +17,7 @@ export function getCountries(){
 export function searchCountries(name){
     return async function (dispatch){
         try{
-            var json = await axios.get('http://localhost:3001/countries?name' + name)
+            var json = await axios.get('http://localhost:3001/countries?name=' + name)
             return dispatch({
                 type: 'SEARCH_COUNTRIES',
                 payload: json.data
@@ -46,7 +46,7 @@ export function getDetail(id){
 export function getActivities(){
     return async function (dispatch){
         try{
-            var json = await axios.get('http://localhost:3001/activities')
+            var json = await axios.get('http://localhost:3001/activity')
             return dispatch({
                 type: 'GET_ACTIVITIES',
                 payload: json.data
@@ -60,14 +60,14 @@ export function getActivities(){
 
 export function postActivities(payload){
     return async function (dispatch){
-        await axios.post('http://localhost:3001/activities',payload)
+        await axios.post('http://localhost:3001/activity',payload)
         return dispatch({
             type: 'POST_ACTIVITIES'
         })
     }
 }
 
-export function restarDetail(){
+export function restartDetail(){
     return(dispatch) =>{
         dispatch({
             type: 'RESET'
