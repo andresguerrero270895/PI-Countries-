@@ -5,14 +5,15 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('activity', {
 
-    id: {
-        type:DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
+    // id: {
+    //     type:DataTypes.INTEGER,
+    //     primaryKey: true,
+    //     autoIncrement: true,
+    // },
   
     name: {
         type: DataTypes.STRING,
+        allowNull:false,
     },
   
     difficulty: {
@@ -20,11 +21,12 @@ module.exports = (sequelize) => {
     },
   
     duration: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
     },
   
     season: {
         type: DataTypes.ENUM(['Winter', 'Autum', 'Spring', 'Summer']),
+        allowNull: false,
     },
       
   });

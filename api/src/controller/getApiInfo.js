@@ -41,13 +41,13 @@ const getDbInfo = async () => {
     await getApiInfo()
     const aux = await Country.findAll({
         
-        attributes: {
-            exclude: ['updatedAt', 'createdAt'],
-        },
+        // attributes: {
+        //     exclude: ['updatedAt', 'createdAt'],
+        // },
 
         include: {
             model: Activity,
-            attributes: ['name', 'difficulty', 'duration', 'season'],
+            attributes: ['name','duration','difficulty', 'season'],
             through: {
                 attributes: [],
             }
