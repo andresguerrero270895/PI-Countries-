@@ -6,7 +6,13 @@ const { Country, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const country = {
-  name: 'Argentina',
+  id: "ARG",
+  name: "Argentina",
+  flag: "https://flagcdn.com/ar.svg",
+  capital: ["Buenos Aires"],
+  continent: "South America",
+  area: 2780400,
+  population: 45376763,
 };
 
 describe('Country routes', () => {
@@ -21,4 +27,15 @@ describe('Country routes', () => {
       agent.get('/countries').expect(200)
     );
   });
+  describe("GET /countries?name=Pais", () => {
+    it("should get 200", () => agent.get("/countries?name=ArgEntina").expect(200));
+  });
+
+  describe("GET /countries?name=Pais Fallido", () => {
+    it("should get 404", () => agent.get("/countries?name=fsffddf").expect(404));
+  })
+  
+  describe("GET /countries/:id", () => {
+    it("should get 200", () => agent.get("/countries/Arg").expect(200));
+  })
 });

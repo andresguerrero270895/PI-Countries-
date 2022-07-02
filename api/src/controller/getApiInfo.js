@@ -39,7 +39,7 @@ async function getApiInfo() {
 
 const getDbInfo = async () => {
     await getApiInfo()
-    const aux = await Country.findAll({
+    const dbInfo = await Country.findAll({
         
         // attributes: {
         //     exclude: ['updatedAt', 'createdAt'],
@@ -53,7 +53,7 @@ const getDbInfo = async () => {
             }
         }
     })
-    return aux
+    return dbInfo
 }
 
 const getActivities = async () => {

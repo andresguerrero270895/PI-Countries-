@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     let allCountries = await getDbInfo();
     if (name) {
         let countryName = await allCountries.filter((el) => 
-        el.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()))
+        el.name.toLowerCase().includes(name.toLowerCase()))
         countryName.length ?
             res.status(200).send(countryName) :
             res.status(404).send('The country does not exist');

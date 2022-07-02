@@ -19,4 +19,23 @@ describe('Country model', () => {
       });
     });
   });
+  describe('population', () => {
+    it('should throw an error if population is a STRING', (done) => {
+      Country.create({
+        population: 'cincuenta'
+      })
+        .then(() => done('should not be created'))
+        .catch(() => done())
+    })
+  })
+
+  describe('id', () => {
+    it('should throw an error if ID is not a STRING', (done) => {
+      Country.create({
+        id: 12
+      })
+        .then(() => done('should not be created'))
+        .catch(() => done())
+    })
+  });
 });

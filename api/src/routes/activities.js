@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
             id: countryId,
         }
     })
-    createActivity.addCountries(countries)
+    createActivity.addCountry(countries)
     res.status(200).send(createActivity)
 
 })
