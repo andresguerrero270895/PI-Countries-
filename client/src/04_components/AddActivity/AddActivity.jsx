@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { postActivities, getActivities } from "../../03_actions";
+import { postActivities, getActivities } from "../../actions";
 
 import NavBar from '../NavBar/NavBar';
 import './AddActivity.css';

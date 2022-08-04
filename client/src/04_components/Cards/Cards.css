@@ -38,3 +38,18 @@
 option{
     color:black;
 }
+
+.stylebtn1{
+    color: white;
+    border: 2px solid white;
+    background-color: black;
+    font-family: Gill Sans MT;
+    font-size: 1rem ;
+}
+.stylebtn2{
+    color: white;
+    border: 2px solid white;
+    background-color: black;
+    font-family: Gill Sans MT;
+    font-size: 1rem ;
+}

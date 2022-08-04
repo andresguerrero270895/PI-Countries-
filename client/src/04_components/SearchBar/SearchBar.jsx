@@ -1,6 +1,6 @@
 import { useState} from 'react'
 import { useDispatch } from 'react-redux';
-import { getCountries,searchCountries } from '../../03_actions/index.js';
+import { getCountries,searchCountries } from '../../actions/index.js';
 import './SearchBar.css'
 
 export default function SearchBar() {
@@ -17,12 +17,11 @@ export default function SearchBar() {
     function onInputChange(e){
         e.preventDefault();
         setName(e.target.value)
-   
     }
 
     return (
     <div className='formSearchBar'>
-        <form  onSubmit={onSubmit}>
+        <form onSubmit={onSubmit}>
             <input 
             className='inputCountry' 
             type="text" 

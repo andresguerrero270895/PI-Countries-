@@ -20,6 +20,12 @@ export default function rootReducer (state = initialState, action){
                 countries: action.payload,
             }
         
+        case'SEARCH':{
+            return {
+                ...state,
+                countries: action.payload,
+            }
+        }
         case 'GET_ID_COUNTRIES':
             return {
                 ...state,

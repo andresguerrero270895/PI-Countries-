@@ -3,13 +3,16 @@ import axios from 'axios';
 export function getCountries(){
     return async function (dispatch){
         try{
-            var json = await axios.get('http://localhost:3001/countries')
+            var json = await axios.get('/countries')
             return dispatch({
                 type:'GET_COUNTRIES',
                 payload: json.data
             })
         } catch (error){
-            console.log(error)
+            return dispatch({
+                type:'SEARCH',
+                payload: json.data
+            })
         }
     }
 }
@@ -17,13 +20,12 @@ export function getCountries(){
 export function searchCountries(name){
     return async function (dispatch){
         try{
-            var json = await axios.get('http://localhost:3001/countries?name=' + name)
+            var json = await axios.get('/countries?name=' + name)
             return dispatch({
                 type: 'SEARCH_COUNTRIES',
                 payload: json.data
             })
         } catch (error){
-            alert('Country not found')
             console.log(error)
         }
     }
@@ -32,7 +34,7 @@ export function searchCountries(name){
 export function getDetail(id){
     return async function (dispatch){
         try{
-            var json = await axios.get('http://localhost:3001/countries/'+id)
+            var json = await axios.get('/countries/'+id)
             return dispatch({
                 type: 'GET_ID_COUNTRIES',
                 payload: json.data
@@ -46,7 +48,7 @@ export function getDetail(id){
 export function getActivities(){
     return async function (dispatch){
         try{
-            var json = await axios.get('http://localhost:3001/activity')
+            var json = await axios.get('/activity')
             return dispatch({
                 type: 'GET_ACTIVITIES',
                 payload: json.data
@@ -60,7 +62,7 @@ export function getActivities(){
 
 export function postActivities(payload){
     return async function (dispatch){
-        await axios.post('http://localhost:3001/activity',payload)
+        await axios.post('/activity',payload)
         return dispatch({
             type: 'POST_ACTIVITIES'
         })

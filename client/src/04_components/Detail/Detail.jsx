@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDetail, restartDetail } from "../../03_actions";
+import { getDetail, restartDetail } from "../../actions";
 import NavBar from "../NavBar/NavBar";
 import './Detail.css'
 

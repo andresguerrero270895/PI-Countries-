@@ -1,27 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCountries, filterByContinent,filterByActivities,orderByName,orderByPopulation,getActivities } from '../../03_actions';
+import { getCountries, filterByContinent,filterByActivities,orderByName,orderByPopulation,getActivities } from '../../actions';
+
 import Card from '../Card/Card.jsx';
 import Paginate from '../Paginate/Paginate.jsx';
+import SearchBar from '../SearchBar/SearchBar';
 import './Cards.css';
 
 export default function Cards(){
     const dispatch = useDispatch();
     const allactivities = useSelector((state) => state.activities);
-    const allcountries = useSelector((state) => state.countries);
+    const allcountries = useSelector((state) => state.countries,() => false) ;
 
     const [, setOrden] = useState("");
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage] = useState(10);
-    const lastCountry = currentPage * countriesPerPage;
-    const firstCountry = lastCountry - countriesPerPage;
-    const currentCountry = allcountries.slice(firstCountry, lastCountry);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [countriesPerPage] = useState(10);
+    // const lastCountry = currentPage * countriesPerPage;
+    // const firstCountry = lastCountry - countriesPerPage;
+    // const currentCountry = allcountries.slice(firstCountry, lastCountry);
     
-    const paginate = (pageNumber) => {
-      setCurrentPage(pageNumber);
+    // const paginate = (pageNumber) => {
+    //   setCurrentPage(pageNumber);
+    // };
+
+    const [currentPage, setCurrentPage] = useState(0);
+
+    let nextPage = () => {
+        if(allcountries.length <= currentPage + 10){
+            setCurrentPage(currentPage);
+        } else setCurrentPage(currentPage + 10);
     };
+    let prevPage = () => {
+        if(currentPage < 9) {
+            setCurrentPage(0)
+        } else setCurrentPage(currentPage - 10);
+    };
+    const currentCountry = allcountries.slice(currentPage, currentPage + 10);
+
+    const pageOne = () => {
+        setCurrentPage(0)
+    }
+
+    if(currentPage > allcountries.length){
+        pageOne()}
 
     useEffect(() => {
       dispatch(getCountries());
@@ -34,31 +57,32 @@ export default function Cards(){
     }
     
     function handleFilterContinent(e) {
+      e.preventDefault();
       dispatch(filterByContinent(e.target.value));
-      setCurrentPage(1);
+      setOrden(e.target.value);
     }
     
     function handleFilterActivity(e) {
       dispatch(filterByActivities(e.target.value));
-      setCurrentPage(1);
+      setOrden(e.target.value);
     }
     
     function handleSortName(e) {
       e.preventDefault();
       dispatch(orderByName(e.target.value));
-      setCurrentPage(1);
-      setOrden(`Ordenado ${e.target.value}`);
+      setOrden(e.target.value);
     }
     
     function handleSortPopulation(e) {
       e.preventDefault();
       dispatch(orderByPopulation(e.target.value));
-      setCurrentPage(1);
-      setOrden(`Ordenado ${e.target.value}`);
+      setOrden(e.target.value);
     }
     
     return (
+      
         <div className='cardsContainer'>
+          
            <section className='section1'>
           <div className='filterContainer'>
            
@@ -108,10 +132,12 @@ export default function Cards(){
             </select>
           </div>
           </section>
+          <div>
+          
                   
           <section className='section2'>
             <div className='cardsBox'>
-            {currentCountry?.map((country) => {
+            {currentCountry && currentCountry?.map((country) => {
               return (
                 <div key={country.id}>
                   <Link to={"/home/" + country.id}>
@@ -128,11 +154,15 @@ export default function Cards(){
             })}
           </div>
           </section>
-          <Paginate
+          {/* <Paginate
             countriesPerPage={countriesPerPage}
             allcountries={allcountries.length}
             paginate={paginate}
-          />  
+          /> */}
+          {currentPage !== 0 ? <button className='stylebtn1' onClick={prevPage}>&#11164; Prev-Page </button> : <div></div> }
+          {currentPage !== 240 ? <button className='stylebtn2' onClick={nextPage}>Next-Page &#11166;</button> : <div></div> }
+          </div>  
+          
           
         </div>
     )

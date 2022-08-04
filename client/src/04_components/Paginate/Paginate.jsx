@@ -12,7 +12,7 @@ export default function Paginate({countriesPerPage, allcountries, paginate}){
                 {pageNumbers && 
                 pageNumbers.map(number =>(
                     <li key={number}>
-                        <button className="btn" onClick={()=>paginate(number)}>{number}</button> 
+                        <button className="btn" onClick={()=>paginate(number)} href="/#">{number}</button> 
                     </li> 
                 ))}
             </ul>
